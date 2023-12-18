@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TodoController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -35,4 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/todos', [TodoController::class, 'index'])->name('todos');
+    Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');
+    Route::patch('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');
+});
+
+require __DIR__ . '/auth.php';
