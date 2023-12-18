@@ -31,7 +31,8 @@ export default function Todos({ todos }: any) {
           value={data.task}
           onChange={(e) => setData("task", e.target.value)}
           required
-          className="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none w-[30rem]"
+          className="border border-gray-700 bg-gray-900 text-xl px-5 pr-16 rounded-lg w-[50rem]"
+          placeholder="Add a new todo"
         />
         <button
           type="submit"
@@ -47,17 +48,22 @@ export default function Todos({ todos }: any) {
             key={todo.id}
             className="flex items-center justify-between p-3 border-b border-gray-200"
           >
+            <p
+              className={
+                todo.completed
+                  ? "line-through text-gray-500 text-xl"
+                  : "text-xl"
+              }
+            >
+              {todo.task}
+            </p>
+
             <input
               type="checkbox"
               checked={todo.completed}
               onChange={() => handleToggleComplete(todo)}
-              className="mr-2"
+              className="mr-2 h-5 w-5 rounded"
             />
-            <span
-              className={todo.completed ? "line-through text-gray-500" : ""}
-            >
-              {todo.task}
-            </span>
           </li>
         ))}
       </ul>
