@@ -8,21 +8,26 @@ export default function Welcome({ auth }: PageProps) {
 
       {auth.user ? (
         <>
-          <h1 className="text-4xl font-bold">Welcome, {auth.user.name}!</h1>
-          <p className="text-gray-600">Here are some useful links:</p>
-          <ul className="list-disc ml-4">
+          <h1 className="text-4xl font-bold text-white">
+            Welcome, {auth.user.name}!
+          </h1>
+          <ul className="flex gap-5 mt-10 text-white">
             <li>
-              <Link href="/todos" className="text-blue-500 hover:underline">
+              <Link href="/todos" className="bg-blue-500 px-4 py-2 rounded">
                 My Todos
               </Link>
             </li>
             <li>
-              <Link href="/settings" className="text-blue-500 hover:underline">
-                Settings
+              <Link href="/profile" className="bg-blue-500 px-4 py-2 rounded">
+                Profile
               </Link>
             </li>
             <li>
-              <Link href="/logout" className="text-blue-500 hover:underline">
+              <Link
+                href={route("logout")}
+                method="post"
+                className="bg-blue-500 px-4 py-2 rounded"
+              >
                 Logout
               </Link>
             </li>

@@ -41,9 +41,10 @@ export default function Todos({ todos }: any) {
           value={data.task}
           onChange={(e) => setData("task", e.target.value)}
           required
-          className="border border-gray-700 bg-gray-900 text-xl px-5 pr-16 rounded-lg w-[50rem]"
+          className="border text-white border-gray-700 bg-gray-900 text-xl px-5 pr-16 rounded-lg w-[50rem]"
           placeholder="Add a new todo"
         />
+
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
