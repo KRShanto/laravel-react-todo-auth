@@ -41,4 +41,17 @@ class TodoController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy(string $id)
+    {
+        $todo = Todo::find($id);
+
+        if ($todo->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $todo->delete();
+
+        return redirect()->back();
+    }
 }

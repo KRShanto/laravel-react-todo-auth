@@ -18,9 +18,19 @@ export default function Todos({ todos }: any) {
     });
   };
 
+  const handleDelete = (todo: any) => {
+    router.delete(route("todos.destroy", { id: todo.id }));
+  };
+
   return (
     <div className="w-[50%] mx-auto px-4">
-      <Head title="Todos" />
+      <Head>
+        <title>Todo App</title>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        />
+      </Head>
 
       <form
         onSubmit={handleAddTodo}
@@ -52,18 +62,24 @@ export default function Todos({ todos }: any) {
               className={
                 todo.completed
                   ? "line-through text-gray-500 text-xl"
-                  : "text-xl"
+                  : "text-xl text-slate-300"
               }
             >
               {todo.task}
             </p>
 
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => handleToggleComplete(todo)}
-              className="mr-2 h-5 w-5 rounded"
-            />
+            <div className="flex items-center gap-5">
+              <button type="button" onClick={() => handleDelete(todo)}>
+                <i className="fas fa-trash text-red-500 hover:text-red-700 text-lg"></i>
+              </button>
+
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => handleToggleComplete(todo)}
+                className="mr-2 h-5 w-5 rounded"
+              />
+            </div>
           </li>
         ))}
       </ul>

@@ -38,6 +38,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/todos', [TodoController::class, 'index'])->name('todos');
     Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');
     Route::patch('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');
+    Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy');
 });
 
 require __DIR__ . '/auth.php';
